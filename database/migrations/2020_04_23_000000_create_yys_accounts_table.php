@@ -15,13 +15,12 @@ class CreateYysAccountsTable extends Migration
     {
         Schema::create('yys_accounts', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
 
+            $table->string('nickname');
             $table->string('sn')->unique();
             $table->integer('price')->unsigned();
-            $table->string('nickname');
             $table->tinyInteger('platform')->unsigned();
-            $table->tinyInteger('serverName')->unsigned();
+            $table->string('serverName')->unsigned();
             $table->integer('avalableTime')->unsigned()->nullable();
 
             $table->string('roleId')->nullable()->index();
@@ -36,6 +35,7 @@ class CreateYysAccountsTable extends Migration
             $table->tinyInteger('ssr')->unsigned()->nullable();
 
             $table->json('yuhun')->nullable();
+            $table->timestamps();
         });
     }
 

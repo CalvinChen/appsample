@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('yys:update list --type=cheap')->hourly()->withoutOverlapping();
-        $schedule->command('yys:update account')->everyThirtyMinutes()->withoutOverlapping();
+        $schedule->command('yys:update account')->everyTenMinutes()->withoutOverlapping();
     }
 
     /**

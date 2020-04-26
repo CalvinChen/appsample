@@ -12,9 +12,14 @@ class YysAccount extends Model
         'yuhun' => 'array',
     ];
 
-    public function scopeWhereNeedUpdate($builder)
+    public function scopeWhereNoDetail($builder)
     {
         return $builder->whereNull('hp');
+    }
+
+    public function scopeWhereInStock($builder)
+    {
+        return $builder->whereNull('status', '=', 2);
     }
 
     public function getServerIdAttribute()

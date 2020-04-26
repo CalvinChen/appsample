@@ -31,7 +31,7 @@ class YysUpdate extends Command
     private function list()
     {
         $type = $this->option('type');
-        echo 'Fetching YYS account list: [type]' . $type;
+        echo 'Fetching YYS account list: [type]' . $type, PHP_EOL;
 
         if ($type == 'cheap') {
             $param = [
@@ -50,10 +50,10 @@ class YysUpdate extends Command
     // update account detail
     private function account()
     {
-        $account = YysAccountRepository::getUnupdated();
+        $account = YysAccountRepository::getNoDetail();
 
         if ($account) {
-            echo "Fetching YYS account detail: {$account['nickname']}";
+            echo "Fetching YYS account detail: {$account['nickname']}", PHP_EOL;
             $account = $this->client->getAccountDetail($account->sn);
             if ($account['price']) {
                 YysAccountRepository::save($account);

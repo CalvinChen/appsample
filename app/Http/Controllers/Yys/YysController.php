@@ -96,7 +96,7 @@ class YysController extends Controller
 
     public function updateSingle()
     {
-        $account = YysAccountRepository::getUnupdated();
+        $account = YysAccountRepository::getNoDetail();
 
         if ($account) {
             $account = $this->client->getAccountDetail($account->sn);

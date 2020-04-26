@@ -62,8 +62,16 @@ class YysAccountRepository
         return sizeof($list);
     }
 
-    public static function getUnupdated(): ?YysAccount
+    public static function getOutOfDate(): ?YysAccount
     {
-        return YysAccount::whereNeedUpdate()->first();
+        return YysAccount::orderBy('avalableTime', 'asc')
+            ->where('avalableTime', '<', time() - 14 * 86400)
+            ->whereInStock()
+            ->first();
+    }
+
+    public static function getNoDetail(): ?YysAccount
+    {
+        return YysAccount::whereNoDetail()->first();
     }
 }
