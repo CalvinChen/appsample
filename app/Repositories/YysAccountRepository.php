@@ -39,13 +39,27 @@ class YysAccountRepository
         return $accounts->unique('roleId')->take(50);
     }
 
-    public static function save(array $data): YysAccount
+    /**
+     * save single account
+     */
+    public static function save(array $data): ?YysAccount
     {
         $account = YysAccount::firstOrNew(['sn' => $data['sn']]);
         $account->fill($data);
         $account->save();
 
         return $account;
+    }
+
+    /**
+     * save all accounts in the list
+     */
+    public static function saveAll(array $list): int
+    {
+        foreach ($list as $account) {
+            self::save($account);
+        }
+        return sizeof($list);
     }
 
     public static function getUnupdated(): ?YysAccount

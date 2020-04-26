@@ -24,7 +24,7 @@ Route::group(['prefix' => 'yys'], function () {
         Route::get('/update-single', ['uses' => 'Yys\YysController@updateSingle']);
     });
 
-    Route::get('/home', ['uses' => 'Yys\YysController@home']);
+    Route::get('/', ['uses' => 'Yys\YysController@ranking']);
     Route::get('/submit', ['uses' => 'Yys\YysController@submit']);
     Route::get('/test', ['uses' => 'Yys\YysController@test']);
     Route::get('/list', ['uses' => 'Yys\YysController@list']);

@@ -59,7 +59,7 @@ class YysController extends Controller
             $account = YysAccountTransformer::transform($apiRes);
         } else {
             $account = YysAccountRepository::get($sn);
-            if (!$account) {
+            if (!$account || !$account->roleId) {
                 $account = $this->client->getAccountDetail($sn);
                 YysAccountRepository::save($account);
             } elseif (!$account->yuhunScore || $request->get('reCalculate')) {

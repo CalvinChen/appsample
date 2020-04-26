@@ -5,32 +5,35 @@ namespace App\Services;
 use App\Transformers\Yys\YysListTransformer;
 use App\Transformers\Yys\YysAccountTransformer;
 use Illuminate\Support\Facades\Http;
-use phpDocumentor\Reflection\Types\Boolean;
 
 class YysClient
 {
-    protected $apiUrl = 'https://recommd.yys.cbg.163.com/cgi-bin/recommend.py';
-
-    public function getAccountList(array $params = [])
+    /**
+     * get a list of yys account
+     * strength = int
+     * platform_type = 2:android
+     */
+    public function getAccountList(array $params = []): array
     {
-        $query = [
+        $query = array_merge([
             'act' => 'recommd_by_role',
             'search_type' => 'role',
-            'count' => '15',
+            'count' => 15,
             'order_by' => 'price ASC',
-            'strength' => '50000',
-            'platform_type' => '2',
             'pass_fair_show' => 1,
             'page' => 1,
             '_t' => time() . rand(100, 999),
-        ];
+        ], $params);
 
         $json = Http::withOptions(['verify' => false])
-            ->get($this->apiUrl, $query)->json();
+            ->get('https://recommd.yys.cbg.163.com/cgi-bin/recommend.py', $query)->json();
 
         return YysListTransformer::transform($json['result']);
     }
 
+    /**
+     * get account detail
+     */
     public function getAccountDetail(string $sn): array
     {
         $query = [
