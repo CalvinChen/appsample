@@ -16,3 +16,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'yys'], function () {
+
+    Route::group(['prefix' => 'cron'], function () {
+        Route::get('/fetch-list', ['uses' => 'Yys\YysController@fetchList']);
+        Route::get('/update-single', ['uses' => 'Yys\YysController@updateSingle']);
+    });
+
+    Route::get('/home', ['uses' => 'Yys\YysController@home']);
+    Route::get('/submit', ['uses' => 'Yys\YysController@submit']);
+    Route::get('/test', ['uses' => 'Yys\YysController@test']);
+    Route::get('/list', ['uses' => 'Yys\YysController@list']);
+    Route::get('/ranking', ['uses' => 'Yys\YysController@ranking']);
+    Route::post('/detail/json', ['uses' => 'Yys\YysController@detail']);
+    Route::get('/detail/{sn}', ['uses' => 'Yys\YysController@detail']);
+    Route::get('/model/{sn}', ['uses' => 'Yys\YysController@model']);
+});
