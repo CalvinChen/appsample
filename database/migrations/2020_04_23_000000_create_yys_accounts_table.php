@@ -20,7 +20,7 @@ class CreateYysAccountsTable extends Migration
             $table->string('sn')->unique();
             $table->integer('price')->unsigned();
             $table->tinyInteger('platform')->unsigned();
-            $table->string('serverName')->unsigned();
+            $table->string('serverName');
             $table->integer('avalableTime')->unsigned()->nullable();
 
             $table->string('roleId')->nullable()->index();
@@ -46,6 +46,6 @@ class CreateYysAccountsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('yys_account');
+        Schema::dropIfExists('yys_accounts');
     }
 }
