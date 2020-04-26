@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Log;
 use App\Services\YysClient;
 use App\Repositories\YysAccountRepository;
 
-class YysFetchList extends Command
+class YysUpdate extends Command
 {
-    protected $signature = 'yys:update {target} {--type}';
+    protected $signature = 'yys:update {target} {--type=}';
     protected $description = 'Fetch users from CBG';
 
     private $client;
