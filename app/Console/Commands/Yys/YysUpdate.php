@@ -42,7 +42,7 @@ class YysUpdate extends Command
             $param = [];
         }
 
-        $list = $this->client->getAccountList();
+        $list = $this->client->getAccountList($param);
         $count = YysAccountRepository::saveAll($list);
         Log::notice("CMD; yys:update; list; {$count} accounts");
     }
