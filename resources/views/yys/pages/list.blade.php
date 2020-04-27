@@ -10,9 +10,9 @@
 
 <div class="card shadow mb-4">
     <div class="table-responsive">
-        <table class="table text-center table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <table class="table text-center table-bordered mb-0" width="100%" cellspacing="0">
             <thead>
-                <tr>
+                <tr class="bg-gray-300">
                     <th>价格</th>
                     <th>昵称</th>
                     <th>体力</th>
@@ -28,7 +28,7 @@
             <tbody>
                 @foreach ($accountList as $account)
                 <tr>
-                    <td>￥ {{ $account->price }}</td>
+                    <td class="text-primary font-weight-bold">￥ {{ $account->price }}</td>
                     <td>
                         <a target="_blank"
                             href="https://yys.cbg.163.com/cgi/mweb/equip/{{ $account->serverId }}/{{ $account->sn }}">

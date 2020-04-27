@@ -1,7 +1,7 @@
 @extends('yys.layouts.app')
 
 @section('title')
-账号列表
+数据提交
 @endsection
 
 @section('mainContent')

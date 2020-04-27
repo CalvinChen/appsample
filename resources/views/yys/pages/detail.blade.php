@@ -58,13 +58,23 @@
                         </div>
                     </div>
                     <div class="col-auto">
+                        @switch($account['platform'])
+                        @case(1)
+                        <i class="fas fa-apple-alt fa-3x text-gray-300"></i>
+                        @break
+                        @case(2)
+                        <i class="fas fa-robot fa-3x text-gray-300"></i>
+                        @break
+                        @default
                         <i class="fas fa-user-circle fa-3x text-gray-300"></i>
+                        @endswitch
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 <div class="row mb-4">
     <div class="col-12">
@@ -79,13 +89,37 @@
     </div>
 </div>
 
+
+@if ($account['hp'])
+<div class="row mb-3">
+    <div class="col-6 col-lg-2 mb-3">
+        <div class="card shadow-sm bg-white py-2 text-center">六星：{{ $account['star6'] }}</div>
+    </div>
+    <div class="col-6 col-lg-2 mb-3">
+        <div class="card shadow-sm bg-white py-2 text-center">体力：{{ $account['hp'] }}</div>
+    </div>
+    <div class="col-6 col-lg-2 mb-3">
+        <div class="card shadow-sm bg-white py-2 text-center">勾玉：{{ $account['gouyu'] }}</div>
+    </div>
+    <div class="col-6 col-lg-2 mb-3">
+        <div class="card shadow-sm bg-white py-2 text-center">结界：{{ $account['cards'] }}</div>
+    </div>
+    <div class="col-6 col-lg-2 mb-3">
+        <div class="card shadow-sm bg-white py-2 text-center">价格：{{ $account['price'] }}</div>
+    </div>
+    <div class="col-6 col-lg-2 mb-3">
+        <div class="card shadow-sm bg-white py-2 text-center">图鉴：{{ $account['sp'] }} SP {{ $account['ssr'] }} SSR</div>
+    </div>
+</div>
+@endif
+
 @if ($account['hero'])
 
 <div class="mb-4">
     <h1 class="h4 text-gray-800 border-left-secondary pl-2">特色式神 - PVE</h1>
 </div>
 
-<div class="card shadow mb-4">
+<div class="card shadow-sm mb-4">
     <div class="table-responsive">
         <table class="table text-center table-bordered mb-0" id="dataTable" width="100%" cellspacing="0">
             <thead>
@@ -125,7 +159,7 @@
     <h1 class="h4 text-gray-800 border-left-secondary pl-2">特色式神 - PVP</h1>
 </div>
 
-<div class="card shadow mb-4">
+<div class="card shadow-sm mb-4">
     <div class="table-responsive">
         <table class="table text-center table-bordered mb-0" id="dataTable" width="100%" cellspacing="0">
             <thead>

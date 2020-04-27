@@ -71,7 +71,7 @@
                 <nav class="navbar navbar-light bg-white topbar mb-4 static-top shadow justify-content-between">
                     <div></div>
                     <!-- Topbar Search -->
-                    <form onsubmit="return helper.gotoDetail('top-search') && false;"
+                    <form onsubmit="helper.gotoDetail('top-search');return false;"
                         class="d-inline-block form-inline ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" id="top-search" class="form-control bg-gray-200 border-0 small"
