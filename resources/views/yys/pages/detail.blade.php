@@ -79,6 +79,92 @@
     </div>
 </div>
 
+@if ($account['hero'])
+
+<div class="mb-4">
+    <h1 class="h4 text-gray-800 border-left-secondary pl-2">特色式神 - PVE</h1>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="table-responsive">
+        <table class="table text-center table-bordered mb-0" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr class="bg-gray-300">
+                    <th>伤 害</th>
+                    <th>式 神</th>
+                    <th>套 装</th>
+                    <th>速 度</th>
+                    <th>暴 击</th>
+                    <th>爆 伤</th>
+                    <th>攻 击</th>
+                    <th>生 命</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($pveHeroes as $hero)
+                <tr>
+                    <td class="text-primary">
+                        <i class="fas fa-skull fa-sm"></i>
+                        {{ round($hero['atk']*$hero['cpower']/100) }}
+                    </td>
+                    <td class="text-primary">{{ $hero['name'] }}</td>
+                    <td>{{ implode(' ',$hero['set']?:['无']) }}</td>
+                    <td>{{ $hero['spd'] }}</td>
+                    <td>{{ $hero['crate'] }}%</td>
+                    <td>{{ $hero['cpower'] }}%</td>
+                    <td>{{ $hero['atk'] }}</td>
+                    <td>{{ $hero['hp'] }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="mb-4">
+    <h1 class="h4 text-gray-800 border-left-secondary pl-2">特色式神 - PVP</h1>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="table-responsive">
+        <table class="table text-center table-bordered mb-0" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr class="bg-gray-300">
+                    <th>命中 / 抵抗</th>
+                    <th>式 神</th>
+                    <th>套 装</th>
+                    <th>速 度</th>
+                    <th>暴 击</th>
+                    <th>爆 伤</th>
+                    <th>攻 击</th>
+                    <th>生 命</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($pvpHeroes as $hero)
+                <tr>
+                    <td class="text-primary">
+                        {{ $hero['debuff'] }} 命中 {{ $hero['resist'] }} 抵抗
+                    </td>
+                    <td class="text-primary">{{ $hero['name'] }}</td>
+                    <td>{{ implode(' ',$hero['set']?:['无']) }}</td>
+                    <td>{{ $hero['spd'] }}</td>
+                    <td>{{ $hero['crate'] }}%</td>
+                    <td>{{ $hero['cpower'] }}%</td>
+                    <td>{{ $hero['atk'] }}</td>
+                    <td>{{ $hero['hp'] }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@endif
+
+
+
+
 <div class="mb-4">
     <h1 class="h4 text-gray-800 border-left-secondary pl-2">御魂数量(+15)</h1>
 </div>

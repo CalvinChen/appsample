@@ -10,6 +10,8 @@ https://docs.bitnami.com/general/infrastructure/lamp/get-started/
 -   composer install
 -   sudo chown -R daemon:www-data storage
 -   sudo chown -R daemon:www-data bootstrap/cache
+-   sudo chmod -R 777 storage
+-   sudo chmod -R 777 bootstrap/cache
 -   cd /opt/bitnami/apache2
 -   vi /opt/bitnami/apache2/conf/bitnami/httpd.conf
 -   sudo /opt/bitnami/ctlscript.sh restart apache
@@ -38,11 +40,11 @@ Uninstall
 
 ssh
 
-    sudo crontab -e
+    crontab -e
 
 add a new line
 
-    * * * * * cd /opt/bitnami/apache2/htdocs/appsample && php artisan schedule:run >> /dev/null 2>&1
+    * * * * * cd /opt/bitnami/apache2/htdocs/appsample && /opt/bitnami/php/bin/php artisan schedule:run >> /dev/null 2>&1
 
 # Others
 

@@ -34,6 +34,7 @@ class CreateYysAccountsTable extends Migration
             $table->tinyInteger('sp')->unsigned()->nullable();
             $table->tinyInteger('ssr')->unsigned()->nullable();
 
+            $table->json('hero')->nullable();
             $table->json('yuhun')->nullable();
             $table->timestamps();
         });

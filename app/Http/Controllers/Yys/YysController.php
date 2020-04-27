@@ -72,7 +72,15 @@ class YysController extends Controller
             'yys.pages.detail',
             [
                 'account' => $account,
-                'groupByName' => (new YysYuhunHelper($account['yuhun']))->groupByName()
+                'groupByName' => (new YysYuhunHelper($account['yuhun']))->groupByName(),
+                'pveHeroes' => empty($account['hero']) ? [] : array_filter($account['hero'], function ($hero) {
+                    return $hero['atk'] * $hero['cpower'] / 100 > 15000
+                        && $hero['set'];
+                }),
+                'pvpHeroes' => empty($account['hero']) ? [] : array_filter($account['hero'], function ($hero) {
+                    return $hero['debuff'] + $hero['resist'] >= 100
+                        ||  $hero['spd'] >= 200;
+                }),
             ]
         );
     }

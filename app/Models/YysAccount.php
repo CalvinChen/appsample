@@ -10,6 +10,7 @@ class YysAccount extends Model
 
     protected $casts = [
         'yuhun' => 'array',
+        'hero' => 'array',
     ];
 
     public function scopeWhereNoDetail($builder)

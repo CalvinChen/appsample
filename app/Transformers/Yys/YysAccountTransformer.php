@@ -30,10 +30,12 @@ class YysAccountTransformer extends BaseTransformer
             'ssr' => $detail['hero_history']['ssr']['got'] ?? 0,
             // yuhun
             'yuhunScore' => 0,
+            'hero' => [],
             'yuhun' => YysYuhunTransformer::transform($detail['inventory'])
         ];
 
         $res['yuhunScore'] = round(array_sum(array_column($res['yuhun'], 'score')));
+        $res['hero'] = YysHeroTransformer::transform($detail['heroes'], $detail['inventory']);
 
         return $res;
     }
