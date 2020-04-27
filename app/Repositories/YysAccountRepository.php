@@ -29,7 +29,7 @@ class YysAccountRepository
         //     $builder->groupBy($config['groupBy']);
         // }
 
-        return $builder->paginate(20);
+        return $builder->paginate(100);
     }
 
     public static function getRanking()

@@ -103,6 +103,48 @@ class YysYuhunHelper
         return $groupByPos->toArray();
     }
 
+    public function getTopSpeeds(string $yuhunName = null)
+    {
+        $res = [
+            1 => 0,
+            2 => 0,
+            3 => 0,
+            4 => 0,
+            5 => 0,
+            6 => 0
+        ];
+        foreach ($this->data as $yuhun) {
+            if ($yuhunName && $yuhun['name'] != $yuhunName) {
+                // 御魂种类过滤
+                continue;
+            }
+            if ($yuhun['pos'] == 2) {
+                $speed = ($yuhun['main'] == '速度' && isset($yuhun['star']) && $yuhun['star'] == 6)
+                    ? ($yuhun['attrs']['速度'] ?? 0) : 0;
+            } else {
+                $speed = $yuhun['attrs']['速度'] ?? 0;
+            }
+            $res[$yuhun['pos']] = max($res[$yuhun['pos']], $speed);
+        }
+        return $res;
+    }
+
+    public function getTopZhaocaiSpeed()
+    {
+        $topSpeeds = $this->getTopSpeeds();
+        $zcSpeeds = $this->getTopSpeeds('招财猫');
+        $gap = [
+            $topSpeeds[1] - $zcSpeeds[1],
+            $topSpeeds[2] - $zcSpeeds[2],
+            $topSpeeds[3] - $zcSpeeds[3],
+            $topSpeeds[4] - $zcSpeeds[4],
+            $topSpeeds[5] - $zcSpeeds[5],
+            $topSpeeds[6] - $zcSpeeds[6],
+        ];
+        rsort($gap);
+        return array_sum($zcSpeeds) + $gap[0] + $gap[1];
+    }
+
 
 
 

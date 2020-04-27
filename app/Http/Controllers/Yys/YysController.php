@@ -68,11 +68,13 @@ class YysController extends Controller
             }
         }
 
+        $yuhunHelper = new YysYuhunHelper($account['yuhun']);
+
         return view(
             'yys.pages.detail',
             [
                 'account' => $account,
-                'groupByName' => (new YysYuhunHelper($account['yuhun']))->groupByName(),
+                'groupByName' => $yuhunHelper->groupByName(),
                 'pveHeroes' => empty($account['hero']) ? [] : array_filter($account['hero'], function ($hero) {
                     return $hero['atk'] * $hero['cpower'] / 100 > 15000
                         && $hero['set'];
@@ -81,6 +83,8 @@ class YysController extends Controller
                     return $hero['debuff'] + $hero['resist'] >= 100
                         ||  $hero['spd'] >= 200;
                 }),
+                'topSpeeds' => $yuhunHelper->getTopSpeeds(),
+                'topZcSpeed' => $yuhunHelper->getTopZhaocaiSpeed()
             ]
         );
     }

@@ -24,7 +24,7 @@ class YysYuhunTransformer extends BaseTransformer
             'name' => $item['name'],
             'pos' => $item['pos'],
             'lv' => $item['level'],
-            'xing' => $item['qua'],
+            'star' => $item['qua'],
         ];
 
         $res['main'] = array_shift($item['attrs'])[0];

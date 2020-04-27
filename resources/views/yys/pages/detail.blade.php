@@ -108,7 +108,18 @@
         <div class="card shadow-sm bg-white py-2 text-center">价格：{{ $account['price'] }}</div>
     </div>
     <div class="col-6 col-lg-2 mb-3">
-        <div class="card shadow-sm bg-white py-2 text-center">图鉴：{{ $account['sp'] }} SP {{ $account['ssr'] }} SSR</div>
+        <div class="card shadow-sm bg-white py-2 text-center">图鉴 {{ $account['sp'] }} SP {{ $account['ssr'] }} SSR</div>
+    </div>
+    <div class="col-12 col-lg-6 mb-3">
+        <div class="card shadow-sm bg-white py-2 text-center">
+            各位置最高速：{{ implode('~',$topSpeeds) }}
+        </div>
+    </div>
+    <div class="col-6 col-lg-2 mb-3">
+        <div class="card shadow-sm bg-white py-2 text-center">散件一速 +{{ array_sum($topSpeeds)+57 }}</div>
+    </div>
+    <div class="col-6 col-lg-2 mb-3">
+        <div class="card shadow-sm bg-white py-2 text-center">招财一速 +{{ $topZcSpeed+57 }}</div>
     </div>
 </div>
 @endif

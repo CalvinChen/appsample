@@ -6,39 +6,21 @@
         痒痒鼠照妖镜 V2
     </a>
 
-
-    {{-- <li class="nav-item">
-        <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>系统状态</span>
-        </a>
-    </li> --}}
-
-    <!-- Divider -->
-    {{-- <hr class="sidebar-divider">
-    <div class="sidebar-heading">
-        账号列表
-    </div>
-    <li class="nav-item">
-        <a class="nav-link" href="list">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>资源丰富帐号</span>
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="list">
-            <i class="fas fa-fw fa-table"></i>
-            <span>性价比高帐号</span>
-        </a>
-    </li> --}}
-
-
     <hr class="sidebar-divider">
 
     <li class="nav-item">
         <a class="nav-link" href="/yys/ranking">
             <i class="fas fa-fw fa-table"></i>
             <span>跑分排行榜</span>
+        </a>
+    </li>
+
+    <hr class="sidebar-divider">
+
+    <li class="nav-item">
+        <a class="nav-link" href="/yys/list">
+            <i class="fas fa-fw fa-table"></i>
+            <span>账号浏览历史</span>
         </a>
     </li>
 
