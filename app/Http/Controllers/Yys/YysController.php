@@ -8,6 +8,7 @@ use App\Services\YysClient;
 use App\Http\Controllers\Controller;
 use App\Repositories\YysAccountRepository;
 use App\Libraries\YysYuhunHelper;
+use App\Libraries\YysHeroHelper;
 use App\Transformers\Yys\YysYuhunJsonTransformer;
 use App\Transformers\Yys\YysAccountTransformer;
 
@@ -58,17 +59,21 @@ class YysController extends Controller
             $apiRes = YysYuhunJsonTransformer::transform($request->post('yh_json'));
             $account = YysAccountTransformer::transform($apiRes);
         } else {
-            $account = YysAccountRepository::get($sn);
-            if (!$account || !$account->roleId) {
+            $accountMedel = YysAccountRepository::get($sn);
+            if (!$accountMedel || !$accountMedel->roleId) {
                 $account = $this->client->getAccountDetail($sn);
                 YysAccountRepository::save($account);
-            } elseif (!$account->yuhunScore || $request->get('reCalculate')) {
-                // 重新计算御魂分数
-                YysYuhunHelper::reCalculate($account);
+            } else {
+                $account = $accountMedel->toArray();
+                if (!$account['yuhunScore'] || $request->get('reCalculate')) {
+                    // 重新计算御魂分数
+                    YysYuhunHelper::reCalculate($account);
+                }
             }
         }
 
         $yuhunHelper = new YysYuhunHelper($account['yuhun']);
+        YysHeroHelper::appendPrice($account['hero']);
 
         return view(
             'yys.pages.detail',

@@ -121,6 +121,11 @@
     <div class="col-6 col-lg-2 mb-3">
         <div class="card shadow-sm bg-white py-2 text-center">招财一速 +{{ $topZcSpeed+57 }}</div>
     </div>
+    <div class="col-6 col-lg-2 mb-3">
+        <div class="card shadow-sm bg-white py-2 text-center">
+            估价 ￥ {{ round(array_sum(array_column($account['hero'], 'price'))) }}
+        </div>
+    </div>
 </div>
 @endif
 
@@ -143,6 +148,7 @@
                     <th>爆 伤</th>
                     <th>攻 击</th>
                     <th>生 命</th>
+                    <th>￥ 估 价</th>
                 </tr>
             </thead>
             <tbody>
@@ -159,6 +165,7 @@
                     <td>{{ $hero['cpower'] }}%</td>
                     <td>{{ $hero['atk'] }}</td>
                     <td>{{ $hero['hp'] }}</td>
+                    <td>￥ {{ $hero['price'] }}</td>
                 </tr>
                 @endforeach
             </tbody>
@@ -183,6 +190,7 @@
                     <th>爆 伤</th>
                     <th>攻 击</th>
                     <th>生 命</th>
+                    <th>估 价</th>
                 </tr>
             </thead>
             <tbody>
@@ -198,6 +206,7 @@
                     <td>{{ $hero['cpower'] }}%</td>
                     <td>{{ $hero['atk'] }}</td>
                     <td>{{ $hero['hp'] }}</td>
+                    <td>{{ $hero['price'] }}</td>
                 </tr>
                 @endforeach
             </tbody>
